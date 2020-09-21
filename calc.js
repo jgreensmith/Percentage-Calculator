@@ -1,22 +1,17 @@
-var numField1 = document.getElementById('numField1');
-var numField2 = document.getElementById('numField2');
+var numerator = document.getElementById('numField1');
+var denominator = document.getElementById('numField2');
 var resultField = document.getElementById('resultField');
 var form = document.getElementById('xIsWhatPercentOfY');
 
 
 form.addEventListener('submit', function(event) {
-    if (!numField1.value || !numField2.value) {
+    event.preventDefault();
+    if (!numerator.value || !denominator.value) {
         alert("enter values you loser");
     }
-    else {
-        var x = parseFloat(numField1.value);
-        var y = parseFloat(numField2.value);
-        
-        var result = x / y;
-        var percent = result * 100;
-        
-        resultField.innerText = "Answer " + percent + "%";
-        event.preventDefault();
+    else {    
+        var percent = numerator.value / denominator.value * 100;
+        resultField.innerText = percent === NaN ? 'ensure both values are numbers' : `Answer ${percent}%`;
     }
     
 });
